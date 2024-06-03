@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj": {}
+    "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj": {}
   },
   "projects": {
-    "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj": {
+    "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj",
+        "projectUniqueName": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj",
         "projectName": "backend",
-        "projectPath": "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj",
-        "packagesPath": "/Users/vzu/.nuget/packages/",
-        "outputPath": "/Users/vzu/Documents/university/CustomWebApplication/backend/obj/",
+        "projectPath": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj",
+        "packagesPath": "/Users/Julian.Codespoti/.nuget/packages/",
+        "outputPath": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/vzu/.nuget/NuGet/NuGet.Config"
+          "/Users/Julian.Codespoti/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
