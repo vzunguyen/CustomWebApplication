@@ -17,19 +17,15 @@ public class ContentService : IContentService
 
     public async Task<Content> GetContentById(int id)
     {
-        return await _context.Content.FirstOrDefaultAsync(c => c.Id == id);
+        var content = await _context.Content.FirstOrDefaultAsync(c => c.Id == id);
+        return content;
     }
     
     // get content by userid
-    public async Task<IEnumerable<Content>> GetContentByUserId(HttpContext httpContext)
+    public async Task<IEnumerable<Content>> GetContentByUserId(int userId)
     {
-        var hasValidUserId = int.TryParse(httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value, out var userId);
-        if (!hasValidUserId)
-        {
-            return null;
-        }
-        
-        return await _context.Content.Where(c => c.UserId == userId).ToListAsync();
+        var content = await _context.Content.Where(c => c.UserId == userId).ToListAsync();
+        return content;
     }
     
     public async Task<IEnumerable<Content>> GetCurrentUserContent(HttpContext httpContext)
@@ -93,11 +89,16 @@ public class ContentService : IContentService
         {
             return Results.Unauthorized();
         }
-        
+    
         var content = await _context.Content.FindAsync(id);
         if (content == null)
         {
             return Results.NotFound();
+        }
+
+        if (content.UserId != userId)
+        {
+            return Results.Forbid(); // Return forbidden if the content does not belong to the current user
         }
 
         _context.Content.Remove(content);

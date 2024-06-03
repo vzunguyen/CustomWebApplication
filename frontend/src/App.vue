@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="d-flex flex-column min-vh-100">
     <NavBar />
     <Footer />
   </div>
@@ -17,3 +17,11 @@ export default {
   }
 }
 </script>
+
+<style>
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>

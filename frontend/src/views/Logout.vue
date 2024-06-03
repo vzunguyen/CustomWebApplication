@@ -1,9 +1,11 @@
 <template>
   <nav>
+    <div class="container">
     <!-- Other navigation items -->
-    <h1>Log Out</h1>
-    <button v-if="loggedIn" @click="handleLogout">Logout</button>
+    <h1 class="mb-4">Log Out</h1>
+    <button class="btn btn-primary" style="margin-top: 2em;" v-if="loggedIn" @click="handleLogout">Logout</button>
     <!-- Other navigation items -->
+    </div>
   </nav>
 </template>
 

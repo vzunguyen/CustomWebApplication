@@ -205,6 +205,22 @@ public async Task<IEnumerable<User>> GetPendingFriendRequests(HttpContext httpCo
     return pendingRequests;
 }
 
+public async Task<IEnumerable<User>> GetSentRequests(HttpContext httpContext)
+{
+    var hasValidUserId = int.TryParse(httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value, out var userId);
+    if (!hasValidUserId)
+    {
+        return new List<User>();
+    }
+
+    var sentRequests = await _context.UserFriendships
+        .Where(uf => uf.FriendId == userId && !uf.IsAccepted)
+        .Select(uf => uf.User)
+        .ToListAsync();
+
+    return sentRequests;
+}
+
 public async Task<IEnumerable<User>> GetFriends(HttpContext httpContext)
 {
     var hasValidUserId = int.TryParse(httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value, out var userId);

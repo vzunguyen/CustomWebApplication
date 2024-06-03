@@ -9,6 +9,7 @@ public interface IUserService
     Task<User?> GetCurrentUser(HttpContext httpContext);
     Task<IEnumerable<User>> GetAllUsers();
     Task<IResult> SendFriendRequest(int recipientId, HttpContext httpContext);
+    Task<IEnumerable<User>> GetSentRequests(HttpContext httpContext);
     Task<IResult> AcceptFriendRequest(int friendId, HttpContext httpContext);
     Task<IResult> RemoveFriend(int friendId, HttpContext httpContext);
     Task<IEnumerable<User>> GetPendingFriendRequests(HttpContext httpContext);

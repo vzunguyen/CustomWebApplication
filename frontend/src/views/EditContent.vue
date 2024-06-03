@@ -1,23 +1,31 @@
 <template>
-  <div class="edit-content">
-    <h2>Edit Content</h2>
+  <div class="container">
+    <h2 class="mb-4">Edit Content</h2>
     <div v-if="content">
-      <form v-if="isAuthorizedUser" @submit.prevent="updateContent">
-        <div>
-          <label for="title">Title:</label>
-          <input type="text" id="title" v-model="content.title" required>
+      <form v-if="isAuthorizedUser" @submit.prevent="updateContent" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" id="title" v-model="content.title" class="form-control" required>
+          <div class="invalid-feedback">
+            Please provide a title.
+          </div>
         </div>
-        <div>
-          <label for="description">Description:</label>
-          <textarea id="description" v-model="content.description" required></textarea>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea id="description" v-model="content.description" class="form-control" rows="5" required></textarea>
+          <div class="invalid-feedback">
+            Please provide a description.
+          </div>
         </div>
-        <button type="submit">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </form>
-      <div v-else>
-        <p>You are not authorized to edit this content.</p>
+      <div v-else class="alert alert-danger" role="alert">
+        You are not authorized to edit this content.
       </div>
     </div>
-    <p v-else>Loading...</p>
+    <div v-else class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
 </template>
 
@@ -67,36 +75,15 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  max-width: 600px;
+}
 
-* {
+h2 {
   font-family: 'Roboto', sans-serif;
 }
 
-form {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-div {
-  margin-bottom: 10px;
-}
-
-label {
-  display: block;
+.form-label {
   font-weight: bold;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 5px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
 }
 </style>

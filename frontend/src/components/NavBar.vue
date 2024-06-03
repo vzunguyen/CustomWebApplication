@@ -8,7 +8,7 @@
         <router-link class="nav-link" to="/search">Search</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/profile">Profile</router-link>      
+        <router-link class="nav-link" to="/profile">Profile</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/friends">Friends</router-link>
@@ -16,8 +16,11 @@
       <li class="nav-item">
         <router-link class="nav-link" to="/create-content">Create Content</router-link>
       </li>
-      <li v-if="loggedIn" class="nav-item">
+      <li class="nav-item ms-auto" v-if="loggedIn">
         <router-link class="nav-link" to="/logout">Log Out</router-link>
+      </li>
+      <li class="nav-item ms-auto" v-if="!loggedIn">
+        <router-link class="nav-link" to="/login">Log In</router-link>
       </li>
     </ul>
     <div class="tab-content">
@@ -29,11 +32,22 @@
 <script>
 export default {
   name: "NavBar",
-  computed: {
-    loggedIn() {
-      return localStorage.getItem('token') !== null
-    }
+  data() {
+    return {
+      loggedIn: localStorage.getItem('token') !== null
+    };
   },
+  created() {
+    window.addEventListener('storage', this.syncLoginState);
+  },
+  beforeUnmount() {
+    window.removeEventListener('storage', this.syncLoginState);
+  },
+  methods: {
+    syncLoginState() {
+      this.loggedIn = localStorage.getItem('token') !== null;
+    }
+  }
 };
 </script>
 
@@ -41,7 +55,6 @@ export default {
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  text-decoration: none;
 }
 
 .container {
@@ -54,10 +67,11 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
-  border-bottom: none;
-  padding: 10px;
-  border-radius: 5px 5px 0 0;
+  background-color: #ffffff;
+  border-bottom: 2px solid #dee2e6;
+  padding: 10px 15px;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-item {
@@ -68,18 +82,20 @@ export default {
   color: #495057;
   font-weight: 500;
   padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-link:hover {
-  background-color: #e9ecef;
+.nav-link:hover,
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #ffffff;
 }
 
 .tab-content {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
-  border-radius: 0 0 5px 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
