@@ -106,13 +106,14 @@ app.MapGet("/api/users/current", (HttpContext httpContext, IUserService userServ
 // Content routes
 app.MapGet("/api/content", (IContentService contentService) => contentService.GetAllContent());
 app.MapGet("/api/content/{id}", (int id, IContentService contentService) => contentService.GetContentById(id));
-app.MapGet("/api/content/user/{userId}", (HttpContext httpContext, IContentService contentService) => contentService.GetContentByUserId(httpContext));
+app.MapGet("/api/content/user/{userId}", (int userId, IContentService contentService) => contentService.GetContentByUserId(userId));
 app.MapGet("/api/content/user/current", (HttpContext httpContext, IContentService contentService) => contentService.GetCurrentUserContent(httpContext));
 app.MapPost("/api/content", (ContentDto contentDto, IContentService contentService, HttpContext httpContext) => contentService.CreateContent(contentDto, httpContext)); 
 app.MapPut("/api/content/{id}", (int id, ContentDto contentDto, IContentService contentService, HttpContext httpContext) => contentService.UpdateContent(id, contentDto, httpContext));
 app.MapDelete("/api/content/{id}", (int id, IContentService contentService, HttpContext httpContext) => contentService.DeleteContent(id, httpContext));
 
 // Friendship routes
+app.MapGet("/api/friends/sent", (HttpContext httpContext, IUserService userService) => userService.GetSentRequests(httpContext));
 app.MapPost("/api/friends/request", (int friendId, IUserService userService, HttpContext httpContext) => userService.SendFriendRequest(friendId, httpContext));
 app.MapPut("/api/friends/accept", (int friendId, IUserService userService, HttpContext httpContext) => userService.AcceptFriendRequest(friendId, httpContext));
 app.MapDelete("/api/friends/delete/{friendId}", (int friendId, IUserService userService, HttpContext httpContext) => userService.RemoveFriend(friendId, httpContext));

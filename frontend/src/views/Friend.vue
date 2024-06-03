@@ -1,5 +1,5 @@
 <template>
-  <div class="friend">
+  <div class="friend container">
     <h1>Friends</h1>
     <div class="friend-list">
       <FriendCard v-for="friend in friends" :key="friend.id" :friend="friend" @view-profile="viewProfile" />

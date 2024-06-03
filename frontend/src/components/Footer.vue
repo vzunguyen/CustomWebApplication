@@ -1,24 +1,27 @@
 <template>
-  <p>This website was made by vzu </p>
+  <footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-0">This website was made by vzu</p>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Footer'
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  font-family: 'Roboto', sans-serif;
+.footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
 }
 
 p {
   font-size: 1rem;
-  text-align: center;
+  margin: 0;
 }
 </style>

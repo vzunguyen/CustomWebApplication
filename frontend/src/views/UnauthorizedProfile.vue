@@ -35,7 +35,7 @@ export default {
     try {
       const response = await api.getUserByName(this.username)
       this.user = response.data
-      
+
       const contentResponse = await api.getContentByUserId(this.user.id)
       this.contents = contentResponse.data
     } catch (error) {

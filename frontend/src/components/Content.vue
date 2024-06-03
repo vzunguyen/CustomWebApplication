@@ -14,6 +14,7 @@
 <script>
 import api from '../services/api'
 import router from "../router/index"
+
 export default {
   name: 'ContentPost',
   props: {
@@ -24,13 +25,12 @@ export default {
   },
   methods: {
     editContent() {
-      router.push({name: 'EditContent', params: {id: this.content.id}});
+      router.push({ name: 'EditContent', params: { id: this.content.id } });
     },
     async deleteContent() {
       try {
         const response = await api.deleteContent(this.content.id);
-
-        if (response.ok) {
+        if (response.status === 200) {
           // Emit an event to notify the parent component that the content has been deleted
           this.$emit('content-deleted', this.content.id);
         } else {
@@ -38,14 +38,17 @@ export default {
           console.error('Failed to delete content:', response.statusText);
         }
       } catch (error) {
-        console.error('Error deleting content:', error);
+        if (error.response && error.response.status === 403) {
+          router.push({ name: 'UnAuthorized' });
+        } else {
+          console.error('Error deleting content:', error);
+        }
       }
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
   font-family: 'Roboto', sans-serif;

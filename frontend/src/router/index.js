@@ -40,12 +40,17 @@ const routes = [
     path: '/create-content',
     name: 'CreateContent',
     component: () => import('../views/CreateContent.vue')
-  }, 
+  },
   {
     path: '/edit-content/:id',
     name: 'EditContent',
     component: () => import('../views/EditContent.vue')
-  } ,
+  },
+  {
+    path: '/unauthorized',
+    name: 'UnAuthorized',
+    component: () => import('../components/Unauthorized.vue')
+  },
   {
     path: '/logout',
     name: 'Logout',
