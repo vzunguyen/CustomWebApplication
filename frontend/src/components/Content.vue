@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card col-md-12">
     <div class="card-body">
       <h5 class="card-title">{{ content.title }}</h5>
       <p class="card-text">{{ content.description }}</p>
@@ -59,7 +59,7 @@ export default {
   align-self: center;
   margin: 10px;
   display: inline-block;
-  width: 50rem;
+  //width: 50rem;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
 }

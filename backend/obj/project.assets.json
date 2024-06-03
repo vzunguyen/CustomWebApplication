@@ -3421,25 +3421,24 @@
     ]
   },
   "packageFolders": {
-    "/Users/Julian.Codespoti/.nuget/packages/": {}
+    "/Users/vzu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj",
+      "projectUniqueName": "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj",
       "projectName": "backend",
-      "projectPath": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/backend.csproj",
-      "packagesPath": "/Users/Julian.Codespoti/.nuget/packages/",
-      "outputPath": "/Users/Julian.Codespoti/Desktop/Uni/CustomWebApplication/backend/obj/",
+      "projectPath": "/Users/vzu/Documents/university/CustomWebApplication/backend/backend.csproj",
+      "packagesPath": "/Users/vzu/.nuget/packages/",
+      "outputPath": "/Users/vzu/Documents/university/CustomWebApplication/backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/Julian.Codespoti/.nuget/NuGet/NuGet.Config"
+        "/Users/vzu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3452,6 +3451,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {

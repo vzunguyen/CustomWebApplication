@@ -65,7 +65,11 @@ export default {
         return api.post('/content', contentDto);
     },
     updateContent(id, contentDto) {
-        return api.put(`/content/${id}`, contentDto);
+        return api.put(`/content/${id}`, contentDto).then(response => {
+            window.location.reload(); // Reload the page after content deletion
+            window.location.href = '/'; // Redirect to home page
+            return response;
+        });
     },
     deleteContent(id) {
         return api.delete(`/content/${id}`).then(response => {
