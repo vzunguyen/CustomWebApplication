@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-# CustomWebApplication
-=======
-# CustomWebApplication
->>>>>>> master
+# Custom Web Application
